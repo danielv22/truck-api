@@ -33,6 +33,7 @@ class TruckController extends Controller
      */
     public function show(Truck $truck)
     {
+        $truck->load('category');
         return response()->json(['truck' => $truck], Response::HTTP_OK);
     }
 
@@ -42,7 +43,7 @@ class TruckController extends Controller
     public function update(TruckUpdateRequest $request, Truck $truck)
     {
         $truck->update($request->all());
-        return response()->json(['event' => $truck], Response::HTTP_OK);
+        return response()->json(['truck' => $truck], Response::HTTP_OK);
     }
 
     /**
@@ -51,6 +52,6 @@ class TruckController extends Controller
     public function destroy(Truck $truck)
     {
         $truck->delete();
-        return response()->json(['event' => $truck], Response::HTTP_ACCEPTED);
+        return response()->json(['truck' => $truck], Response::HTTP_ACCEPTED);
     }
 }

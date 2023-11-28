@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Truck extends Model
 {
@@ -19,6 +20,11 @@ class Truck extends Model
         'vehicle_inspection_expiration_date',
         'insurance_expiration_date',
         'registration_expiration_date',
-        'status'
+        'status',
+        'category_id'
     ];
+
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

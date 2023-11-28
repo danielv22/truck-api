@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -32,7 +33,10 @@ class TruckFactory extends Factory
                 'insurance_expired',
                 'crashed',
                 'in_maintenance'
-            ])[0]
+            ])[0],
+            'category_id' => function () {
+                return Category::inRandomOrder()->first()->id;
+            }
         ];
     }
 }
